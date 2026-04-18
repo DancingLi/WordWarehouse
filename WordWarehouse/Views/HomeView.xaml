@@ -1,0 +1,92 @@
+<UserControl x:Class="WordWarehouse.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="16">
+            <UniformGrid Columns="4"
+                         Margin="0,0,0,18">
+                <Border Margin="0,0,12,0"
+                        Padding="16"
+                        CornerRadius="10"
+                        Background="#F3EEE1">
+                    <StackPanel>
+                        <TextBlock FontSize="14"
+                                   Foreground="#655F56"
+                                   Text="Total Items" />
+                        <TextBlock FontSize="30"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding TotalCount}" />
+                    </StackPanel>
+                </Border>
+                <Border Margin="0,0,12,0"
+                        Padding="16"
+                        CornerRadius="10"
+                        Background="#E9F2E3">
+                    <StackPanel>
+                        <TextBlock FontSize="14"
+                                   Foreground="#55614F"
+                                   Text="New" />
+                        <TextBlock FontSize="30"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding NewCount}" />
+                    </StackPanel>
+                </Border>
+                <Border Margin="0,0,12,0"
+                        Padding="16"
+                        CornerRadius="10"
+                        Background="#E6EEF7">
+                    <StackPanel>
+                        <TextBlock FontSize="14"
+                                   Foreground="#4E5E73"
+                                   Text="Learning" />
+                        <TextBlock FontSize="30"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding LearningCount}" />
+                    </StackPanel>
+                </Border>
+                <Border Padding="16"
+                        CornerRadius="10"
+                        Background="#F1E7DA">
+                    <StackPanel>
+                        <TextBlock FontSize="14"
+                                   Foreground="#6B5848"
+                                   Text="Mastered" />
+                        <TextBlock FontSize="30"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding MasteredCount}" />
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+
+            <Border Padding="16"
+                    CornerRadius="10"
+                    Background="#FCFBF8"
+                    BorderBrush="#E2DBD1"
+                    BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Margin="0,0,0,12"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Text="Recent Entries" />
+                    <DataGrid ItemsSource="{Binding RecentEntries}"
+                              AutoGenerateColumns="False"
+                              HeadersVisibility="Column"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              GridLinesVisibility="Horizontal"
+                              MinHeight="260">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Language" Binding="{Binding Language}" Width="120" />
+                            <DataGridTextColumn Header="Type" Binding="{Binding EntryType}" Width="100" />
+                            <DataGridTextColumn Header="Content" Binding="{Binding Content}" Width="*" />
+                            <DataGridTextColumn Header="Meaning" Binding="{Binding Meaning}" Width="220" />
+                            <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="120" />
+                            <DataGridTextColumn Header="Updated" Binding="{Binding UpdatedAt}" Width="160" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

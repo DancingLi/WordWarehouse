@@ -1,0 +1,96 @@
+<UserControl x:Class="WordWarehouse.Views.LibraryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Margin="0,0,0,14"
+                Padding="16"
+                CornerRadius="10"
+                Background="#FCFBF8"
+                BorderBrush="#E2DBD1"
+                BorderThickness="1">
+            <WrapPanel>
+                <StackPanel Margin="0,0,14,10">
+                    <TextBlock Margin="0,0,0,6" Text="Language" />
+                    <ComboBox Width="150"
+                              DisplayMemberPath="Label"
+                              SelectedValuePath="Value"
+                              ItemsSource="{Binding LanguageOptions}"
+                              SelectedValue="{Binding SelectedLanguage}" />
+                </StackPanel>
+                <StackPanel Margin="0,0,14,10">
+                    <TextBlock Margin="0,0,0,6" Text="Type" />
+                    <ComboBox Width="150"
+                              DisplayMemberPath="Label"
+                              SelectedValuePath="Value"
+                              ItemsSource="{Binding EntryTypeOptions}"
+                              SelectedValue="{Binding SelectedEntryType}" />
+                </StackPanel>
+                <StackPanel Margin="0,0,14,10">
+                    <TextBlock Margin="0,0,0,6" Text="Status" />
+                    <ComboBox Width="150"
+                              DisplayMemberPath="Label"
+                              SelectedValuePath="Value"
+                              ItemsSource="{Binding StatusOptions}"
+                              SelectedValue="{Binding SelectedStatus}" />
+                </StackPanel>
+                <StackPanel Margin="0,0,14,10">
+                    <TextBlock Margin="0,0,0,6" Text="Tag" />
+                    <TextBox Width="150" Text="{Binding Tag, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+                <StackPanel Margin="0,0,14,10">
+                    <TextBlock Margin="0,0,0,6" Text="Search" />
+                    <TextBox Width="220" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+                <StackPanel Margin="0,24,10,10" Orientation="Horizontal">
+                    <Button Width="100" Margin="0,0,10,0" Command="{Binding ApplyFiltersCommand}" Content="Apply" />
+                    <Button Width="100" Command="{Binding ClearFiltersCommand}" Content="Reset" />
+                </StackPanel>
+            </WrapPanel>
+        </Border>
+
+        <Border Grid.Row="1"
+                Padding="16"
+                CornerRadius="10"
+                Background="#FCFBF8"
+                BorderBrush="#E2DBD1"
+                BorderThickness="1">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top"
+                            Margin="0,0,0,12"
+                            Orientation="Horizontal">
+                    <Button Width="100"
+                            Margin="0,0,10,0"
+                            Click="EditSelected_Click"
+                            Content="Edit" />
+                    <Button Width="100"
+                            Click="DeleteSelected_Click"
+                            Content="Delete" />
+                </StackPanel>
+
+                <DataGrid ItemsSource="{Binding Entries}"
+                          SelectedItem="{Binding SelectedEntry}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          IsReadOnly="True"
+                          GridLinesVisibility="Horizontal">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Language" Binding="{Binding Language}" Width="110" />
+                        <DataGridTextColumn Header="Type" Binding="{Binding EntryType}" Width="100" />
+                        <DataGridTextColumn Header="Content" Binding="{Binding Content}" Width="*" />
+                        <DataGridTextColumn Header="Meaning" Binding="{Binding Meaning}" Width="220" />
+                        <DataGridTextColumn Header="Tags" Binding="{Binding Tags}" Width="140" />
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="110" />
+                        <DataGridTextColumn Header="Updated" Binding="{Binding UpdatedAt}" Width="160" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,50 @@
+<Window x:Class="WordWarehouse.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WordWarehouse"
+        Height="760"
+        Width="1200"
+        MinHeight="680"
+        MinWidth="980"
+        WindowStartupLocation="CenterScreen"
+        Background="#FFF7F3EA"
+        Icon="Assets/wordwarehouse-icon.ico">
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Padding="0,0,0,16">
+            <DockPanel>
+                <StackPanel>
+                    <TextBlock FontSize="28"
+                               FontWeight="SemiBold"
+                               Foreground="#202020"
+                               Text="WordWarehouse" />
+                    <TextBlock Margin="0,4,0,0"
+                               Foreground="#5B5B5B"
+                               Text="Capture and review everyday language notes across English, German, Japanese, and Korean." />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <TabControl Grid.Row="1"
+                    Background="White"
+                    BorderBrush="#D7D0C6">
+            <TabItem Header="Home">
+                <ContentControl x:Name="HomeHost" />
+            </TabItem>
+            <TabItem Header="Quick Add">
+                <ContentControl x:Name="QuickAddHost" />
+            </TabItem>
+            <TabItem Header="Library">
+                <ContentControl x:Name="LibraryHost" />
+            </TabItem>
+            <TabItem Header="Review">
+                <ContentControl x:Name="ReviewHost" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

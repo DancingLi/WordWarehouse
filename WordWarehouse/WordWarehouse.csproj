@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\wordwarehouse-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.28" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\wordwarehouse-icon.ico" />
+    <Resource Include="Assets\wordwarehouse-icon.png" />
+  </ItemGroup>
+</Project>
